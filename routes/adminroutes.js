@@ -35,7 +35,7 @@ Router.get("/clients",(req,res)=>{
 
 // Update a Client information
 Router.post("/client/:_id",(req,res)=>{
-    await Client.findOneAndUpdate({"_id":req.params._id},{
+    Client.findOneAndUpdate({"_id":req.params._id},{
        name:req.body.name,
         surname:req.body.surname,
         cell:req.body.cell,
