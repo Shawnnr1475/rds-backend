@@ -12,11 +12,15 @@ Router.post("/newclient", async (req,res)=>{
         type:req.body.type,
         balance:req.body.balance
     })
-    const result = await newclient.save()
-    if(result){
+    .save()
+    .then(results=>{
         res.status(200)
-        res.send(result)
-    }
+        res.send(results)
+    })
+    .catch(err=>{
+        res.status(503)
+        res.send(err)
+    })
 })
 
 // Read all the Client from the database
