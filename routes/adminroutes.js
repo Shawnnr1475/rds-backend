@@ -65,6 +65,19 @@ Router.delete("/client/:_id",(req,res)=>{
     })
 })
 
+Router.post("/clien-payment/:_id",(req,res)=>{
+    Client.findOneAndUpdate({"_id":req.params._id},{
+         balance:req.body.balance
+         },{new:true})
+     .then(results=>{
+         res.status(200)
+         res.send(results)
+     })
+     .catch(err=>{
+         console.log(err)
+     })
+})
+
 
 module.exports = Router
 
