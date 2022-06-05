@@ -21,7 +21,11 @@ Router.post("/newclient",(req,res)=>{
     })
 })
 
-// Read all the Client from the databas
+// Read all the Client from the database
+Router.get("/new",(req,res)=>{
+    res.send("hello")
+})
+
 Router.get("/clients",(req,res)=>{
     Client.find({},(err,data)=>{
         if(err){
