@@ -18,5 +18,5 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(adminRoutes)
 
-app.listen(PORT,()=>{console.log(`Listening at port ${PORT}`)})
+app.listen(process.env.PORT || PORT,()=>{console.log(`Listening at port ${PORT}`)})
 
