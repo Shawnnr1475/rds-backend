@@ -3,22 +3,20 @@ const Router = express.Router()
 const Client = require("../models/model")
 
 // Create new Client
-Router.post("/newclient",(req,res)=>{
-    const newclient = new Client({
+Router.post("/newclient", async (req,res)=>{
+    const newclient = await new Client({
         name:req.body.name,
         surname:req.body.surname,
         cell:req.body.cell,
         code:req.body.code,
         type:req.body.type,
         balance:req.body.balance
-    }).save()
-    .then(result=>{
-        console.log(result)
+    })
+    const result = await newclient.save()
+    if(result){
         res.status(200)
-    })
-    .catch(err =>{
-        console.log(err)
-    })
+        res.send(result)
+    }
 })
 
 // Read all the Client from the database
