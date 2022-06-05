@@ -22,10 +22,6 @@ Router.post("/newclient",(req,res)=>{
 })
 
 // Read all the Client from the database
-Router.get("/new",(req,res)=>{
-    res.send("hello")
-})
-
 Router.get("/clients",(req,res)=>{
     Client.find({},(err,data)=>{
         if(err){
@@ -48,6 +44,7 @@ Router.post("/client/:_id",(req,res)=>{
         },{new:true})
     .then(results=>{
         res.status(200)
+        res.send(results)
     })
     .catch(err=>{
         console.log(err)
